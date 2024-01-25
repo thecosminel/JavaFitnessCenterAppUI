@@ -1,0 +1,25 @@
+<mat-toolbar class="flex justify-center">
+    <mat-toolbar-row>
+        <a href="http://localhost:4200/" class="flex-none text-3xl">FitnessCenterApp</a>
+
+        <div class="flex-grow"></div>
+    
+        <button mat-icon-button class="flex-none" aria-label="Navbar menu icon" (click)="toggleSecondToolbar()">
+            <mat-icon>menu</mat-icon>
+        </button>
+    </mat-toolbar-row>
+
+    <mat-toolbar-row class="flex justify-center text-red-500" *ngIf="secondToolbarVisibility">
+        <div class="flex-grow flex justify-center">
+            <button (click)="showEquipmentItemPage()">
+                EquipmentItems
+            </button>
+        </div>
+        <div class="flex-grow flex justify-center">
+            None
+        </div>
+        <div class="flex-grow flex justify-center">
+            None
+        </div>
+    </mat-toolbar-row>
+</mat-toolbar>
