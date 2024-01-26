@@ -1,0 +1,12 @@
+<div class="flex justify-center flex-wrap gap-5">
+    @for (item of equipmentItems; track $index) {
+        <app-equipment-item-card [item]="item"/>
+    }
+    @empty {
+        <div>
+            <h1>
+                No Equipment items exists
+            </h1>
+        </div>
+    }
+</div>
