@@ -13,11 +13,11 @@
       </mat-card-content>
 
     <mat-card-actions class="flex justify-between">
-        <button mat-icon-button aria-label="edit" class="">
+        <button mat-icon-button aria-label="edit" class="" (click)="editItem()">
             <mat-icon>edit</mat-icon>
-          </button>
-          <button mat-icon-button aria-label="delete" class="">
+        </button>
+        <button mat-icon-button aria-label="delete" class="" (click)="deleteItem()">
             <mat-icon>delete</mat-icon>
-          </button>
+        </button>
     </mat-card-actions>
 </mat-card>

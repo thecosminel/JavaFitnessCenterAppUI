@@ -4,24 +4,27 @@ import { EquipmentItem } from '../../../model/equipmentItem';
 import { ItemCondition } from '../../../model/enums/ItemCondition';
 import { EquipmentItemServiceService } from '../../../service/equipment-item-service.service';
 import { HttpClientModule } from '@angular/common/http';
+import { MatIconModule } from '@angular/material/icon';
+import { MatFabButton } from '@angular/material/button';
+import { MatDialog } from '@angular/material/dialog';
+import { CreateEquipmentItemComponent } from '../dialogs/create-equipment-item/create-equipment-item.component';
 
 @Component({
   selector: 'app-equipment-item-page',
   standalone: true,
   imports: [
     EquipmentItemCardComponent,
-    HttpClientModule
+    HttpClientModule,
+    MatIconModule,
+    MatFabButton
   ],
   templateUrl: './equipment-item-page.component.html',
   styleUrl: './equipment-item-page.component.scss'
 })
 export class EquipmentItemPageComponent {
-  equipmentItems: EquipmentItem[] = [
-    new EquipmentItem(1, "Dumbell", ItemCondition.GOOD),
-    new EquipmentItem(2, "Dumbell", ItemCondition.BROKEN)
-  ]
+  equipmentItems: EquipmentItem[] = []
 
-  constructor(private service: EquipmentItemServiceService) {}
+  constructor(private service: EquipmentItemServiceService, public dialog: MatDialog) {}
 
   ngOnInit() : void{
     this.service.getEquipmentItems().subscribe(
@@ -29,5 +32,9 @@ export class EquipmentItemPageComponent {
         return new EquipmentItem(item.id, item.name, ItemCondition[item.condition as keyof typeof ItemCondition]);
       })
     )
+  }
+
+  handleOpenCreate(){
+    this.dialog.open(CreateEquipmentItemComponent);
   }
 }

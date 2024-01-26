@@ -4,6 +4,7 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import {MatTabsModule} from '@angular/material/tabs';
+import { NavbarService } from '../../service/navbar.service';
 
 
 @Component({
@@ -20,7 +21,9 @@ import {MatTabsModule} from '@angular/material/tabs';
   styleUrl: './navbar.component.scss'
 })
 export class NavbarComponent {
-  secondToolbarVisibility = true;
+  public secondToolbarVisibility = true;
+
+  constructor(private navbarService: NavbarService){}
 
   toggleSecondToolbar(){
     this.secondToolbarVisibility = !this.secondToolbarVisibility;
@@ -28,8 +31,6 @@ export class NavbarComponent {
 
   showEquipmentItemPage()
   {
-    console.log("Lala")
+    this.navbarService.toggleEIVisibility();
   }
-
-  
 }
